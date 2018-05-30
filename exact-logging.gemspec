@@ -8,13 +8,13 @@ Gem::Specification.new do |spec|
   spec.name          = "exact-logging"
   spec.version       = Exact::Logging::VERSION
   spec.authors       = ["Donncha Redmond"]
-  spec.email         = ["dredmond@e-xact.com"]
+  spec.email         = ["github@mail.donncha.com"]
   spec.description   = %q{Simple logging for gem development.}
   spec.summary       = %q{Simple logging which logs to a file if Rails.logger is not defined.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
-  spec.files         = Dir["{lib}/**/*"] + ["LICENSE.txt", "Rakefile", "README.md"]
+  spec.files         = Dir["{lib}/**/*"] + ["Rakefile", "README.md"]
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
