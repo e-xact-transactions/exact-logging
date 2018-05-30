@@ -1,0 +1,37 @@
+# === Test Logging (log4r) configuration. ===
+#
+# Overrides the default Rails logger (named 'rails') with the daily logger
+# (changes the log file daily).
+#
+# The test logger configuration. All logs go to the file.
+#
+log4r_config:
+  pre_config:
+    global:
+      level: DEBUG
+    root  :
+      level: DEBUG
+  loggers:
+    - name      : rails
+      level     : DEBUG
+      additive  : 'false'
+      trace     : 'false'
+      outputters:
+        - logdatefile
+    - name      : "<%= logger_name %>"
+      level     : DEBUG
+      additive  : 'true'
+      trace     : 'false'
+      outputters:
+        - logdatefile
+  outputters:
+    - type        : DateFileOutputter
+      name        : logdatefile
+      level       : DEBUG
+      date_pattern: '%Y%m%d'
+      trunc       : 'false'
+      filename    : "<%= base_dir %>/log/<%= environment %>.log"
+      formatter   :
+        date_pattern: '%Y-%m-%d %Z %H:%M:%S'
+        pattern     : '%d %l: %m'
+        type        : PatternFormatter

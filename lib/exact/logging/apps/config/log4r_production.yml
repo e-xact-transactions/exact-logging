@@ -1,0 +1,44 @@
+# === Production Logging (log4r) configuration. ===
+#
+# Overrides the default Rails logger (named 'rails') with the daily logger
+# (changes the log file daily).
+#
+# The production logger configuration. Rails log goes to the file and the
+# application logs go to syslog. The syslog logs show in the file too.
+#
+log4r_config:
+  pre_config:
+    global:
+      level: INFO
+    root  :
+      level: INFO
+  loggers:
+    - name      : rails
+      level     : INFO
+      additive  : 'false'
+      trace     : 'false'
+      outputters:
+        - logdatefile
+    - name      : "<%= logger_name %>"
+      level     : INFO
+      additive  : 'true'
+      trace     : 'false'
+      outputters:
+        - logsyslog
+  outputters:
+    - type        : DateFileOutputter
+      name        : logdatefile
+      level       : INFO
+      date_pattern: '%Y%m%d'
+      trunc       : 'false'
+      filename    : "<%= base_dir %>/log/<%= environment %>.log"
+      formatter   :
+        date_pattern: '%Y-%m-%d %Z %H:%M:%S'
+        pattern     : '%d %l: %m'
+        type        : PatternFormatter
+    - type        : SyslogOutputter
+      name        : logsyslog
+      ident       : steam
+      facility    : local4
+      level       : INFO
+
