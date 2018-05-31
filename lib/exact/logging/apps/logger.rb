@@ -28,7 +28,7 @@ module Exact
             Log4r::Outputter.prepend(options[:message_adjuster])
           end
 
-          Exact::Logging::Logger.logger = Exact::Logging::Apps::Logger
+          Exact::Logging::Logger.class_variable_set("@@logger", Exact::Logging::Apps::Logger)
         end
 
         def self.log(level, msg, exception, options)

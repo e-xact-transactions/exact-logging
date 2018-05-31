@@ -21,7 +21,7 @@ module Exact
           if log_sql_statements
             ActiveRecord::Base.logger = @@logger if defined?(ActiveRecord)
           end
-          Exact::Logging::Logger.logger = Exact::Logging::Gems::Logger
+          Exact::Logging::Logger.class_variable_set("@@logger", Exact::Logging::Gems::Logger)
         end
 
         def self.log(level, msg, exception, options)
