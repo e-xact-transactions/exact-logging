@@ -78,7 +78,6 @@ module Exact
           rescue Encoding::UndefinedConversionError => e
             $stderr.print "Logging failed: " + e.message + "\n"
           rescue Exception => e
-            byebug
             $stderr.print "Logging failed: " + detailed_message(e)
           end
         end
