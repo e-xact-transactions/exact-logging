@@ -83,10 +83,6 @@ module Exact
           end
         end
 
-        # Return the Log4r logger if ot has been configured, Rails.logger
-        # otherwise. Optonally specify the logger name argument.
-        # If  unsure about the logger name argument, you should probably omit it
-        # and use the default.
         def self.logger
           @@logger ||= Log4r::Logger.get(@@logger_name)
         end

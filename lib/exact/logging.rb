@@ -42,8 +42,7 @@ module Exact
           "Could not parse URL - #{$!.class}" # the $! error may actually include the url itself, which we don't want to log
         end
       end
-
-      end
+    end
 
     class << self
       attr_accessor :log_prefix
