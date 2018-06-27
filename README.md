@@ -6,7 +6,7 @@ Provides convenient logging for apps and gems, including setup and config.
 
 Add this line to your application's Gemfile:
 
-    gem 'exact-logging', git: 'https://github.com/fintechdev/exact-logging.git'
+    gem 'exact-logging', git: 'https://github.com/exact/exact-logging.git'
 
 And then execute:
 
