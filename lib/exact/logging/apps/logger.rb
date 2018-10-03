@@ -16,7 +16,7 @@ module Exact
 
           cfg = ::Log4r::YamlConfigurator
 
-          custom_file = "#{cfg['Rails.root']}/config/log4r_#{environment}.yml"
+          custom_file = "#{base_dir}/config/log4r_#{environment}.yml"
           unless File.exist?(custom_file)
             custom_file = File.expand_path(File.dirname(__FILE__) + "/config/log4r_#{environment}.yml")
           end
