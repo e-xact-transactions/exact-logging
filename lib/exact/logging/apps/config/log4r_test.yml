@@ -29,7 +29,7 @@ log4r_config:
       level       : DEBUG
       date_pattern: '%Y%m%d'
       trunc       : 'false'
-      filename    : "<%= base_dir %>/log/<%= environment %>.log"
+      filename    : "<%= base_dir %>/log/<%= environment %><%= ENV['TEST_ENV_NUMBER'] %>.log"
       formatter   :
         date_pattern: '%Y-%m-%d %Z %H:%M:%S'
         pattern     : '%d %l: %m'
