@@ -1,0 +1,38 @@
+# === Asset Compilation Logging (log4r) configuration. ===
+log4r_config:
+  pre_config:
+    global:
+      level: INFO
+    root  :
+      level: INFO
+  loggers:
+    - name      : rails
+      level     : INFO
+      additive  : 'false'
+      trace     : 'false'
+      outputters:
+        - logdatefile
+    - name      : "<%= logger_name %>"
+      level     : INFO
+      additive  : 'true'
+      trace     : 'false'
+      outputters:
+        - logstdout
+  outputters:
+    - type        : DateFileOutputter
+      name        : logdatefile
+      level       : INFO
+      date_pattern: '%Y%m%d'
+      trunc       : 'false'
+      filename    : "<%= base_dir %>/log/<%= environment %>.log"
+      formatter   :
+        date_pattern: '%Y-%m-%d %Z %H:%M:%S'
+        pattern     : '%d %l: %m'
+        type        : PatternFormatter
+    - type        : StdoutOutputter
+      name        : logstdout
+      level       : INFO
+      formatter   :
+        date_pattern: '%Y-%m-%d %Z %H:%M:%S'
+        pattern     : '%d %l: %m'
+        type        : PatternFormatter
